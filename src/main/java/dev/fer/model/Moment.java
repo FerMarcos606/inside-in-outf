@@ -1,5 +1,6 @@
 package dev.fer.model;
 
+
 import java.time.LocalDate;
 
 public class Moment {
@@ -16,7 +17,7 @@ public class Moment {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.emotion = emotion;
+        this.emotion = emotion; // Esto ya no da error
         this.date = date;
         this.creationDate = LocalDate.now();
         this.modificationDate = LocalDate.now();
@@ -38,7 +39,9 @@ public class Moment {
         this.modificationDate = LocalDate.now();
     }
 
-    public ListEmotions getEmotion() { return emotion; }
+     public ListEmotions getEmotion() {
+        return emotion;
+    }
     public void setEmotion(ListEmotions emotion) {
         this.emotion = emotion;
         this.modificationDate = LocalDate.now();
