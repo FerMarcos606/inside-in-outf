@@ -62,4 +62,21 @@ public class MomentServicesTests {
         assertEquals(2, moments.size(), "El servicio debería devolver 2 momentos");
         assertEquals("Título 1", moments.get(0).getTitle());
     }
+    @Test
+    public void shouldReturnAllMoments() {
+        // Arrange
+        Moment m1 = new Moment(1, "Título 1", "Descripción 1", null, LocalDate.now());
+        Moment m2 = new Moment(2, "Título 2", "Descripción 2", null, LocalDate.now());
+
+        when(repository.getAllMoments()).thenReturn(Arrays.asList(m1, m2));
+
+        // Act
+        List<Moment> moments = service.getAllMoments();
+
+        // Assert
+        assertNotNull(moments);
+        assertEquals(2, moments.size(), "El servicio debería devolver 2 momentos");
+        assertEquals("Título 1", moments.get(0).getTitle());
+}
+
 }
