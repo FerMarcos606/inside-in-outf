@@ -55,28 +55,7 @@ void findMomentById() {
     Moment moment = new Moment(1, "Viaje", "Viaje a la playa", ListEmotions.ALEGRIA, LocalDate.now());
     repository.store(moment);
 
-//     Optional<Moment> foundMoment = repository.findById(1);
 
-//     assertTrue(foundMoment.isPresent());
-//     assertEquals(1, foundMoment.get().getId());
-// }
-// Test para actualizar un momento:
-
-// Lógica: Asegura que el método update() funcione.
-
-// Pasos: Guarda un Moment, modifica su título o descripción, y luego usa update() para verificar que los cambios se reflejan en el repositorio.
-
-// Test para eliminar un momento:
-
-// Lógica: Asegura que el método deleteById() funcione.
-
-// Pasos: Guarda un Moment, elimínalo con deleteById(), y luego verifica que el repositorio está vacío o que el momento ya no puede ser encontrado.
-
-// Test para cuando no se encuentra un id:
-
-// Lógica: Asegura que el método findById() se comporta bien cuando el id no existe.
-
-// Pasos: Busca un id que no has guardado y verifica que el resultado sea un Optional vacío.
 
 
     }
