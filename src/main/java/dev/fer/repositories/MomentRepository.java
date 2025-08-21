@@ -14,7 +14,7 @@ public class MomentRepository {
     }
 
     // Recuperar todos los momentos
-    public List<Moment> getAll() {
+    public List<Moment> getAllMoments() {
         return new ArrayList<>(moments); // devolvemos copia para evitar modificar la lista interna
     }
 
@@ -73,7 +73,7 @@ public class MomentRepository {
     }
 
    public void addMoment(Moment moment) {
-    // TODO Auto-generated method stub
+    
     throw new UnsupportedOperationException("Unimplemented method 'addMoment'");
    }
 }
