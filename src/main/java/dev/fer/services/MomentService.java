@@ -1,32 +1,36 @@
 package dev.fer.services;
+
+import dev.fer.model.Moment;
 import dev.fer.repositories.MomentRepository;
+
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import dev.fer.model.Moment;
 
 public class MomentService {
 
     private final MomentRepository repository;
-    private static final AtomicInteger counter = new AtomicInteger(0);
+    private final AtomicInteger counter = new AtomicInteger(0); // para generar IDs únicos
 
     public MomentService(MomentRepository repository) {
         this.repository = repository;
     }
 
+    // Agrega un momento y le asigna un ID único
+     public Moment addMoment(Moment moment) {
+         int newId = counter.incrementAndGet();
+         moment.setId(newId);
+        repository.store(moment);
+         return moment;
+     }
+
+        // Devuelve todos los momentos
     public List<Moment> getAllMoments() {
         return repository.getAllMoments();
     }
 
-    // Método que vamos a completar
-    public Moment addMoment(Moment moment) {
-        // Genera un ID simple y se lo asigna al momento.
-        moment.setId(counter.incrementAndGet());
-        // Llama al repositorio para guardar el momento.
-        repository.addMoment(moment);
-        return moment;
-    }
-
+    // Elimina un momento por ID
     public boolean deleteMoment(int id) {
         return repository.deleteMoment(id);
     }
+
 }

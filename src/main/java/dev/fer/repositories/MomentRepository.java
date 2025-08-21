@@ -35,18 +35,29 @@ public class MomentRepository {
         return null; // Si no lo encuentra después de recorrer toda la lista, devuelve null
     } 
 
-    public boolean delete(int id) {
-       Moment momentToDelete = findById(id);
+    // public boolean delete(int id) {
+    //    Moment momentToDelete = findById(id);
 
    
-    if (momentToDelete != null) {
+    // if (momentToDelete != null) {
        
-        this.moments.remove(momentToDelete);
-        return true; // 
-      }
-    return false;
+    //     this.moments.remove(momentToDelete);
+    //     return true; // 
+    //   }
+    // return false;
        
-    }
+    // }
+
+    public boolean deleteMoment(int id) {
+        Moment momentToDelete = findById(id);
+
+        if (momentToDelete != null) {
+            this.moments.remove(momentToDelete);
+            return true;
+        }
+        return false;
+}
+
     
     public List<Moment> findByEmotion(ListEmotions emotion) {
         List<Moment> filteredMomentsByEmotion = new ArrayList<>();
@@ -72,8 +83,11 @@ public class MomentRepository {
         return filteredMomentsByDate;
     }
 
-   public void addMoment(Moment moment) {
+    public void addMoment(Moment moment) {
     
-    throw new UnsupportedOperationException("Unimplemented method 'addMoment'");
-   }
+     throw new UnsupportedOperationException("Unimplemented method 'addMoment'");
+    }
+
+   
+
 }
