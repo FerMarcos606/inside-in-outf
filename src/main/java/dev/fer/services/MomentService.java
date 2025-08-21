@@ -1,4 +1,4 @@
-package dev.services;
+package dev.fer.services;
 
 import dev.fer.model.Moment;
 import dev.fer.repositories.MomentRepository;

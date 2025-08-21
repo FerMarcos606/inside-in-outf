@@ -1,10 +1,8 @@
 package dev.fer.model;
-
-
 import java.time.LocalDate;
 
-import java.time.LocalDate;
-import dev.fer.model.ListEmotions;
+
+
 
 public class Moment {
     private int id;
