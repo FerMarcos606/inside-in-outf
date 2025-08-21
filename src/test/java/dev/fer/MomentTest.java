@@ -32,30 +32,7 @@ public class MomentTest {
         assertEquals("Cumpleaños", repository.getAll().get(0).getTitle(), "El título del momento debería coincidir");
     }
     
-    Para garantizar que tu código funcione correctamente, lo ideal es terminar de testear la clase MomentRepository antes de pasar a otro paquete.
-
-Los tests que has hecho (repositoryStartsEmpty y storeMomentAddsMomentToRepository) son un excelente comienzo, pero aún quedan varias funcionalidades importantes de tu repositorio por verificar.
-
-Próximos tests para el MomentRepository
-Aquí hay una lista de los tests que te recomiendo hacer. Cada uno se enfoca en una funcionalidad específica de tu repositorio.
-
-Test para encontrar un momento por su id:
-
-Lógica: Asegura que el método findById() funcione.
-
-Pasos: Guarda un Moment en el repositorio y luego usa findById() para verificar que puedes recuperarlo.
-
-Ejemplo de test:
-
-Java
-
-@Test
-void findMomentById() {
-    MomentRepository repository = new MomentRepository();
-    Moment moment = new Moment(1, "Viaje", "Viaje a la playa", ListEmotions.ALEGRIA, LocalDate.now());
-    repository.store(moment);
-
-
+   
 
 
     }
