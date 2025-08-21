@@ -1,41 +1,28 @@
 package dev.fer.controller;
-
-import dev.fer.model.Moment;
-import dev.fer.repositories.MomentRepository;
 import dev.fer.views.MomentView;
-
+import dev.services.MomentServices;
+import dev.fer.model.Moment;
 import java.util.List;
 
 public class MomentController {
 
-    private MomentRepository repository;
+    private final MomentServices service service; // El controlador  depende de la capa de servicio
 
-    public MomentController(MomentRepository repository) {
-        this.repository = repository;
+    public MomentController(MomentServices service) {
+        this.service = service;
     }
 
-    // Mostrar todos los momentos
-    public void getAllMoments() {
-        List<Moment> moments = repository.getAllMoments();
+      public void getAllMoments() {
+        List<Moment> moments = service.getAllMoments(); // 
         MomentView.printAllMoments(moments);
     }
 
     // Añadir un momento
-
-
     public void addMoment(Moment moment) {
-        repository.addMoment(moment);
-        System.out.println("Momento añadido correctamente.");
+        service.addMoment(moment);
     }
 
-    // Eliminar un momento
-    public void deleteMoment(int id) {
-        boolean removed = repository.deleteMomentById(id);
-        if (removed) {
-            System.out.println("Momento eliminado correctamente.");
-        } else {
-            System.out.println("No se encontró un momento con ese ID.");
-        }
+    public boolean deleteMoment(int id) {
+        return service.deleteMoment(id);
     }
 }
-

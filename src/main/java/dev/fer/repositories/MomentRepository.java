@@ -71,4 +71,9 @@ public class MomentRepository {
         
         return filteredMomentsByDate;
     }
+
+   public void addMoment(Moment moment) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'addMoment'");
+   }
 }

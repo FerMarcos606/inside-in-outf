@@ -1,16 +1,16 @@
-package dev.fer;
+package dev.fer.repositories;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import dev.fer.model.ListEmotions;
 import dev.fer.model.Moment;
-import dev.fer.repositories.MomentRepository;
+
 
 import java.time.LocalDate;
 import java.util.List;
 
 
-public class MomentTest {
+public class MomentRepositoryTest {
 
     @Test
     void repositoryStartsEmpty() {
