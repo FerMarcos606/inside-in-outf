@@ -15,7 +15,7 @@ public class MomentRepositoryTest {
     @Test
     void repositoryStartsEmpty() {
         MomentRepository repository = new MomentRepository();
-        assertTrue(repository.getAll().isEmpty(), 
+        assertTrue(repository.getAllMoments().isEmpty(), 
                    "El repositorio debería empezar vacío");
     }
 
@@ -27,8 +27,8 @@ public class MomentRepositoryTest {
                
         repository.store(moment);
 
-        assertEquals(1, repository.getAll().size(), "El repositorio debería tener un momento");
-        assertEquals("Cumpleaños", repository.getAll().get(0).getTitle(), "El título del momento debería coincidir");
+        assertEquals(1, repository.getAllMoments().size(), "El repositorio debería tener un momento");
+        assertEquals("Cumpleaños", repository.getAllMoments().get(0).getTitle(), "El título del momento debería coincidir");
     }
     
     @Test
@@ -81,12 +81,12 @@ public class MomentRepositoryTest {
         repository.store(moment2);
         
         // Verificamos que el repositorio tiene 2 momentos
-        assertEquals(2, repository.getAll().size(), "El repositorio debería tener 2 momentos antes de la eliminación");
+        assertEquals(2, repository.getAllMoments().size(), "El repositorio debería tener 2 momentos antes de la eliminación");
 
         boolean isDeleted = repository.delete(2); 
 
         assertTrue(isDeleted, "El método debería devolver 'true' si la eliminación fue exitosa");
-        assertEquals(1, repository.getAll().size(), "El repositorio debería tener solo 1 momento después de la eliminación");
+        assertEquals(1, repository.getAllMoments().size(), "El repositorio debería tener solo 1 momento después de la eliminación");
         assertNull(repository.findById(2), "El momento con ID 2 no debería ser encontrado después de la eliminación");
     }
 
@@ -98,12 +98,12 @@ public class MomentRepositoryTest {
         repository.store(new Moment(1, "Cumpleaños", "Fiesta con amigos", ListEmotions.ALEGRIA, LocalDate.now()));
         
         // tamaño inicial de la lista
-        int initialSize = repository.getAll().size();
+        int initialSize = repository.getAllMoments().size();
         
         boolean isDeleted = repository.delete(99); 
 
         assertFalse(isDeleted, "El método debería devolver 'false' si el ID no existe");
-        assertEquals(initialSize, repository.getAll().size(), "El tamaño del repositorio no debería haber cambiado");
+        assertEquals(initialSize, repository.getAllMoments().size(), "El tamaño del repositorio no debería haber cambiado");
     }
         //test filtro por emoción
      @Test
