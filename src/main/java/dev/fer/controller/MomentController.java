@@ -2,34 +2,33 @@ package dev.fer.controller;
 
 import dev.fer.services.MomentService;
 import dev.fer.views.MomentView;
+import dev.fer.model.ListEmotions;
 import dev.fer.model.Moment;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class MomentController {
 
-    // 1. Instancia única de la clase (Singleton)
     private static MomentController instance;
 
-    // 2. Dependencia de la capa de servicio
     private final MomentService service;
 
-    // 3. Constructor privado para evitar que se cree desde fuera
-    private MomentController() {
-        // Aquí se crea la dependencia.
-        // Es una forma básica de Inyección de Dependencias???.
-        this.service = new MomentService();
+    // Constructor privado que recibe el servicio
+    public MomentController(MomentService service) {
+    this.service = service;
     }
 
-    // 4. Método estático para obtener la única instancia de la clase
-    public static MomentController getInstance() {
+    // Método estático que recibe el servicio y devuelve la única instancia
+    public static MomentController getInstance(MomentService service) {
         if (instance == null) {
-            instance = new MomentController();
+            instance = new MomentController(service);
         }
         return instance;
     }
-
-    // 5. Métodos que usan el servicio
+    
+    // Tus otros métodos
     public void getAllMoments() {
         List<Moment> moments = service.getAllMoments();
         MomentView.printAllMoments(moments);
@@ -38,8 +37,30 @@ public class MomentController {
     public void addMoment(Moment moment) {
         service.addMoment(moment);
     }
+       
 
-    public void deleteMoment(int id) {
-        service.deleteMoment(id);
+    public boolean deleteMoment(int id) {
+    return service.deleteMoment(id);
     }
+
+     public void filterMomentsByEmotion(String emotionString) {
+        try {
+            ListEmotions emotion = ListEmotions.valueOf(emotionString.toUpperCase());
+            List<Moment> filteredMoments = service.filterByEmotion(emotion);
+            MomentView.printAllMoments(filteredMoments);
+        } catch (IllegalArgumentException e) {
+            System.out.println("La emoción '" + emotionString + "' no es válida. Por favor, intente de nuevo.");
+        }
+    }
+    
+    public void filterMomentsByDate(String dateString) {
+        try {
+            LocalDate date = LocalDate.parse(dateString);
+            List<Moment> filteredMoments = service.filterByDate(date);
+            MomentView.printAllMoments(filteredMoments);
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de fecha no válido. Por favor, use el formato yyyy-mm-dd.");
+        }
+    }
+
 }

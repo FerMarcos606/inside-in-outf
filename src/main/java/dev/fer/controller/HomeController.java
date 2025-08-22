@@ -3,13 +3,14 @@ package dev.fer.controller;
 import dev.fer.views.HomeView;
 
 public class HomeController {
+    
+    private final HomeView view;
 
-    public HomeController() {
-        index();
+    public HomeController(HomeView view) {
+        this.view = view;
     }
     
     public void index() {
-        HomeView.printMenu();
+        this.view.printMenu();
     }
-
 }

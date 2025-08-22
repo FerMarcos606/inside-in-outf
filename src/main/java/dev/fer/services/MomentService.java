@@ -1,8 +1,10 @@
 package dev.fer.services;
 
+import dev.fer.model.ListEmotions;
 import dev.fer.model.Moment;
 import dev.fer.repositories.MomentRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -31,6 +33,13 @@ public class MomentService {
     // Elimina un momento por ID
     public boolean deleteMoment(int id) {
         return repository.deleteMoment(id);
+    }
+     public List<Moment> filterByEmotion(ListEmotions emotion) {
+        return repository.findByEmotion(emotion);
+    }
+
+    public List<Moment> filterByDate(LocalDate date) {
+        return repository.findByMonthAndYear(date.getMonthValue(), date.getYear());
     }
 
 }

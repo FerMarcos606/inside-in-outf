@@ -83,7 +83,7 @@ public class MomentRepositoryTest {
         // Verificamos que el repositorio tiene 2 momentos
         assertEquals(2, repository.getAllMoments().size(), "El repositorio debería tener 2 momentos antes de la eliminación");
 
-        boolean isDeleted = repository.delete(2); 
+        boolean isDeleted = repository.deleteMoment(2); 
 
         assertTrue(isDeleted, "El método debería devolver 'true' si la eliminación fue exitosa");
         assertEquals(1, repository.getAllMoments().size(), "El repositorio debería tener solo 1 momento después de la eliminación");
@@ -100,7 +100,7 @@ public class MomentRepositoryTest {
         // tamaño inicial de la lista
         int initialSize = repository.getAllMoments().size();
         
-        boolean isDeleted = repository.delete(99); 
+        boolean isDeleted = repository.deleteMoment(99); 
 
         assertFalse(isDeleted, "El método debería devolver 'false' si el ID no existe");
         assertEquals(initialSize, repository.getAllMoments().size(), "El tamaño del repositorio no debería haber cambiado");
